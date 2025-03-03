@@ -1,13 +1,11 @@
 from time import sleep
 
 valores = list()
-resposta = ""
 while True:
     valor = int(input("Digite um valor: "))
     if valor in valores:
         print("Valor duplicado, nao foi possivel adicionar.")
         print("------ // ------")
-        break
     else:
         valores.append(valor)
         print("Valor adicionado com sucesso!")
