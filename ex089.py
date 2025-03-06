@@ -20,13 +20,14 @@ for indice, aluno in enumerate(ficha):
     print(f"{indice:<4}{aluno[0]:<10}{aluno[2]:>8.1f}")
 
 while True:
-    print("-" * 30)
-    aluno = int(input("Deseja ver as notas de qual aluno? [Digite o Nº do aluno, caso queira sair, digite 999]: "))
-    while aluno not in ficha:
-        aluno = int(input("Opcao invalida, tente novamente. Lembre-se deve colocar o numero respectivo do aluno que deseja ver."))
-    if aluno == 999:
-        print("Finalizando...")
-        sleep(1)
-        break
-    if aluno <= len(ficha) - 1:
-        print(f"Notas de {ficha[aluno][0]} sao {ficha[aluno][1]} ")
+    while True:
+        print("-" * 30)
+        aluno = int(input("Deseja ver as notas de qual aluno? [Digite o Nº do aluno, caso queira sair, digite 999]: "))
+        if aluno == 999:
+            print("Finalizando...")
+            sleep(1)
+            break
+        while aluno < 0 or aluno >= len(ficha):
+            aluno = int(input(
+                "Opcao invalida, tente novamente. Lembre-se deve colocar o numero respectivo do aluno que deseja ver: "))
+        print(f"Notas de {ficha[aluno][0]} são {ficha[aluno][1]}")
