@@ -11,7 +11,7 @@ while True:
         pessoa["sexo"] = str(input("Opcao Invalida. Sexo [M/F]: ")).strip().upper()[0]
     if pessoa["sexo"] == "F":
         mulheres.append(pessoa.copy())
-    pessoa["idade"] = int(input("Quantos anos voce tem? "))
+    pessoa["idade"] = int(input("Idade:  "))
     totalidade += pessoa["idade"]
     pessoas.append(pessoa.copy())
     del pessoa["nome"]
@@ -30,4 +30,10 @@ print(f"- Dessas pessoas cadastradas, as mulheres sao: ", end="")
 for indice, nome in enumerate(mulheres):
     print(mulheres[indice]["nome"], end=" ")
 print()
+print("Pessoas com idade acima de media: ")
+for p in pessoas:
+    if p["idade"] >= media:
+        print("    ", end="")
+        for chave, valor in p.items():
+            print(f"{chave} = {valor} ", end="")
 

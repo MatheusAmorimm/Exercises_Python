@@ -1,4 +1,4 @@
-jogador = {}
+jogador = dict()
 jogador["nome"] = str(input("Nome do Jogador: "))
 partidas = int(input("Quantas partidas na carreira? "))
 jogador["gols"] = []
@@ -18,4 +18,4 @@ print("-#" * 30)
 print(f"O jogador {jogador["nome"]} jogou {partidas} partidas.")
 for jogo, gols in enumerate(jogador["gols"]):
     print(f"{"=> Na partida ":>5}{jogo+1}{", fez "}{gols}{" gols"}")
-print(f"Foi um total de {total_gols}")
+print(f"Foi um total de {total_gols} gols")

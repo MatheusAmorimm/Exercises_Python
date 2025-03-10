@@ -3,6 +3,7 @@ from time import sleep
 jogador = {}
 jogadores = []
 while True:
+    jogador.clear()
     jogador["nome"] = str(input("Nome do Jogador: "))
     partidas = int(input("Quantas partidas na carreira? "))
     jogador["gols"] = []
@@ -13,9 +14,6 @@ while True:
         jogador["gols"].append(gols_marcados)
     jogador["total"] = total_gols
     jogadores.append(jogador.copy())
-    del jogador["nome"]
-    del jogador["gols"]
-    del jogador["total"]
     resposta = str(input("Quer continuar? [S/N] ")).strip().upper()[0]
     while resposta != "S" and resposta != "N":
         resposta = str(input("Tente novamete. Quer continuar? [S/N] ")).strip().upper()[0]
@@ -23,15 +21,19 @@ while True:
         break
 
 print("-" * 40)
-print(f"{"Cod":<4}{"Nome":<10}{"Gols":<15}{"Total":>6}")
+print("cod ", end="")
+for item in jogador.keys():
+    print(f"{item:<15}", end="")
+print()
 print("-" * 40)
 for indice, jog in enumerate(jogadores):
-    print(f"{indice:<4}{jogadores[indice]["nome"]:<10}{jogadores[indice]["gols"]}{jogadores[indice]["total"]:>21}")
-print(0 in jogadores)
-
+    print(f"{indice:>3} ", end="")
+    for dado in jog.values():
+        print(f"{str(dado):<15}", end="")
+    print()
 while True:
     print("-" * 30)
-    relatorio = int(input("Deseja ver o relatorio de qual jogador? (Digite o codigo do jogador) "))
+    relatorio = int(input("Deseja ver o relatorio de qual jogador? (Digite o codigo do jogador) (999 encerra)"))
 
     if relatorio == 999:
         break
@@ -44,6 +46,7 @@ while True:
         for jogo, gols in enumerate(jogadores[relatorio]["gols"]):
             print(f"=> Na partida {jogo + 1}, fez {gols} gols")
 
+print("finalizando...")
 sleep(1)
 print("-" * 30)
 print("Volte sempre!")
